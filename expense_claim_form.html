@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overseas Business Trip Expense Claim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .section-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin: 20px -10px 20px -10px;
+            border-left: 4px solid #007bff;
+            font-weight: bold;
+        }
+        .required {
+            color: red;
+        }
+        .receipt-info {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Overseas Business Trip Expense Claim</h1>
+
+        <form id="expenseForm">
+            <div class="section-header">Employee Information</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="employeeName">Employee Name <span class="required">*</span></label>
+                    <input type="text" id="employeeName" name="employeeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="employeeId">Employee ID <span class="required">*</span></label>
+                    <input type="text" id="employeeId" name="employeeId" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="department">Department <span class="required">*</span></label>
+                    <select id="department" name="department" required>
+                        <option value="">Select Department</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Sales">Sales</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Operations">Operations</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="manager">Manager/Supervisor</label>
+                    <input type="text" id="manager" name="manager">
+                </div>
+            </div>
+
+            <div class="section-header">Trip Details</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="destination">Trip Destination <span class="required">*</span></label>
+                    <input type="text" id="destination" name="destination" placeholder="City, Country" required>
+                </div>
+                <div class="form-group">
+                    <label for="businessPurpose">Business Purpose <span class="required">*</span></label>
+                    <input type="text" id="businessPurpose" name="businessPurpose" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tripStartDate">Trip Start Date</label>
+                    <input type="date" id="tripStartDate" name="tripStartDate">
+                </div>
+                <div class="form-group">
+                    <label for="tripEndDate">Trip End Date</label>
+                    <input type="date" id="tripEndDate" name="tripEndDate">
+                </div>
+            </div>
+
+            <div class="section-header">Expense Details</div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expenseDate">Expense Date <span class="required">*</span></label>
+                    <input type="date" id="expenseDate" name="expenseDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="category">Expense Category <span class="required">*</span></label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Accommodation">Accommodation</option>
+                        <option value="Flights">Flights</option>
+                        <option value="Ground Transportation">Ground Transportation</option>
+                        <option value="Meals & Entertainment">Meals & Entertainment</option>
+                        <option value="Communications">Communications</option>
+                        <option value="Visa/Immigration">Visa/Immigration</option>
+                        <option value="Business Meetings">Business Meetings</option>
+                        <option value="Office Supplies">Office Supplies</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description <span class="required">*</span></label>
+                <textarea id="description" name="description" placeholder="Provide details about the expense" required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="amount">Amount <span class="required">*</span></label>
+                    <input type="number" id="amount" name="amount" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="currency">Currency <span class="required">*</span></label>
+                    <select id="currency" name="currency" required>
+                        <option value="">Select Currency</option>
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="JPY">JPY (¥)</option>
+                        <option value="AUD">AUD (A$)</option>
+                        <option value="CAD">CAD (C$)</option>
+                        <option value="CHF">CHF</option>
+                        <option value="SGD">SGD (S$)</option>
+                        <option value="HKD">HKD (HK$)</option>
+                        <option value="CNY">CNY (¥)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gbpEquivalent">GBP Equivalent (if different currency)</label>
+                <input type="number" id="gbpEquivalent" name="gbpEquivalent" step="0.01" min="0" placeholder="Leave blank if expense is already in GBP">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="receiptAvailable">Receipt Available? <span class="required">*</span></label>
+                    <select id="receiptAvailable" name="receiptAvailable" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes - Receipt attached</option>
+                        <option value="No">No - Receipt not available</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" name="paymentMethod">
+                        <option value="">Select Method</option>
+                        <option value="Personal Credit Card">Personal Credit Card</option>
+                        <option value="Corporate Credit Card">Corporate Credit Card</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="receipt-info">
+                <strong>Receipt Requirements:</strong>
+                <ul style="margin: 5px 0; padding-left: 20px;">
+                    <li>All expenses over £25 require original receipts</li>
+                    <li>Receipts must show date, vendor name, and itemized details</li>
+                    <li>For overseas expenses, receipts should show local currency and any applicable taxes</li>
+                    <li>Credit card statements alone are not sufficient - detailed receipts required</li>
+                </ul>
+            </div>
+
+            <div class="section-header">Additional Information</div>
+
+            <div class="form-group">
+                <label for="additionalComments">Additional Comments</label>
+                <textarea id="additionalComments" name="additionalComments" placeholder="Any additional information or special circumstances"></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="submissionDate">Submission Date</label>
+                    <input type="date" id="submissionDate" name="submissionDate" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="claimStatus">Claim Status</label>
+                    <input type="text" id="claimStatus" name="claimStatus" value="Pending Approval" readonly>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitExpense()">Submit Expense Claim</button>
+        </form>
+    </div>
+
+    <script>
+        // Set today's date as default submission date
+        document.getElementById('submissionDate').value = new Date().toISOString().split('T')[0];
+
+        // Auto-calculate GBP equivalent when currency changes
+        document.getElementById('currency').addEventListener('change', function() {
+            const gbpField = document.getElementById('gbpEquivalent');
+            if (this.value === 'GBP') {
+                gbpField.value = '';
+                gbpField.placeholder = 'Not needed - expense is in GBP';
+                gbpField.disabled = true;
+            } else {
+                gbpField.disabled = false;
+                gbpField.placeholder = 'Enter GBP equivalent amount';
+            }
+        });
+
+        function submitExpense() {
+            const form = document.getElementById('expenseForm');
+            if (form.checkValidity()) {
+                // Collect form data
+                const formData = new FormData(form);
+                const expenseData = {};
+                for (let [key, value] of formData.entries()) {
+                    expenseData[key] = value;
+                }
+
+                // In a real application, this would send data to a server
+                // For now, we'll just show the data and download as CSV
+                console.log('Expense Data:', expenseData);
+
+                alert('Expense claim submitted successfully! In a production system, this would be sent to your manager for approval.');
+
+                // Optional: Download as CSV
+                downloadCSV(expenseData);
+
+                // Clear form
+                form.reset();
+                document.getElementById('submissionDate').value = new Date().toISOString().split('T')[0];
+                document.getElementById('claimStatus').value = 'Pending Approval';
+
+            } else {
+                alert('Please fill in all required fields before submitting.');
+            }
+        }
+
+        function downloadCSV(data) {
+            const csvContent = Object.entries(data).map(([key, value]) => `${key},${value}`).join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `expense_claim_${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
